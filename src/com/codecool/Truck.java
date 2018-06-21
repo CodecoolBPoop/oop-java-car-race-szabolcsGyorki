@@ -19,6 +19,10 @@ public class Truck extends Vehicle {
         }
     }
 
+    int getBreakdownTurnsLeft() {
+        return breakdownTurnsLeft;
+    }
+
     @Override
     void moveForAnHour(Race race){
         if (this.breakdownTurnsLeft == 0) {

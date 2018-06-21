@@ -45,6 +45,13 @@ public class Race {
 
 
     boolean isThereABrokenTruck() {
+        for (Vehicle vehicle : racers) {
+            if (vehicle instanceof Truck) {
+                if (((Truck) vehicle).getBreakdownTurnsLeft() > 0) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
