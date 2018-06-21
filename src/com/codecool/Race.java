@@ -49,6 +49,11 @@ public class Race {
     }
 
 
+    boolean isRaining() {
+        return weather.isRaining();
+    }
+
+
     public static void main(String[] args) {
 	// write your code here
         race.createVehicles();
