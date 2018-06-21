@@ -3,20 +3,23 @@ package com.codecool;
 
 public class Car extends Vehicle {
 
-    private int normalSpeed;
-
-    private int getNormalSpeed() {
-        return normalSpeed;
-    }
-
     public Car() {
         RandomHelpers rh = new RandomHelpers();
+        setDistanceTraveled(0);
         setName(rh.getCarName());
-        normalSpeed = rh.genRandNum(80, 110);
+        setSpeed(rh.genRandNum(80, 110));
+        setCurrentSpeed(getSpeed());
+        setType("car");
     }
 
-    public static void main(String[] args) {
-        Car car = new Car();
-        System.out.println(car.getName() + ", speed: " + car.getNormalSpeed());
+
+    @Override
+    void moveForAnHour(Race race){
+        if (race.isThereABrokenTruck()) {
+            setCurrentSpeed(75);
+        } else {
+            setCurrentSpeed(getSpeed());
+        }
+        setDistanceTraveled(getDistanceTraveled() + getCurrentSpeed());
     }
 }

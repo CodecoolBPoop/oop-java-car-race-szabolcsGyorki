@@ -1,10 +1,11 @@
 package com.codecool;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
 
-    private List<Vehicle> racers;
+    private List<Vehicle> racers = new ArrayList<>();
     private static Race race = new Race();
 
     private Weather weather = new Weather();
@@ -12,16 +13,18 @@ public class Race {
     private void createVehicles() {
         for (int i = 0; i < 10; i++) {
             racers.add(new Truck());
-            racers.add(new Motorcycle());
+            racers.add(new Motorcycle(i));
             racers.add(new Car());
         }
     } // creates 10 racers, 10 trucks and 10 motorcycles.
 
 
     private void simulateRace() {
-        for (Vehicle vehicle : racers) {
-            weather.setRaining();
-            vehicle.moveForAnHour(race);
+        for (int i = 0; i < 50; i++) {
+            for (Vehicle vehicle : racers) {
+                weather.setRaining();
+                vehicle.moveForAnHour(race);
+            }
         }
 
     } // simulates the race by
@@ -31,14 +34,17 @@ public class Race {
 
     private void printRaceResults() {
         for (Vehicle vehicle : racers) {
-            System.out.println(vehicle.getName());
-            System.out.println(vehicle.getDistanceTraveled());
+            System.out.println("Type: " + vehicle.getType());
+            System.out.println(" Name: " + vehicle.getName());
+            System.out.println(" Traveled: " + vehicle.getDistanceTraveled());
+            System.out.println();
+
         }
 
     } // prints each vehicle's name, distance traveled ant type.
 
 
-    private boolean isThereABrokenTruck() {
+    boolean isThereABrokenTruck() {
         return false;
     }
 
@@ -46,6 +52,7 @@ public class Race {
     public static void main(String[] args) {
 	// write your code here
         race.createVehicles();
+        race.simulateRace();
         race.printRaceResults();
     }
 }

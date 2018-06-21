@@ -1,11 +1,14 @@
 package com.codecool;
 
-public abstract class Vehicle {
+abstract class Vehicle {
 
+    private int speed;
+    private int currentSpeed;
     private int distanceTraveled;
     private String name;
+    private String type;
 
-    public int getDistanceTraveled() {
+    int getDistanceTraveled() {
         return distanceTraveled;
     }
 
@@ -13,8 +16,8 @@ public abstract class Vehicle {
         return name;
     }
 
-    public void setDistanceTraveled(int distanceTraveld) {
-        this.distanceTraveled = distanceTraveld;
+    void setDistanceTraveled(int distanceTraveled) {
+        this.distanceTraveled = distanceTraveled;
     }
 
     void setName(String name) {
@@ -22,7 +25,30 @@ public abstract class Vehicle {
     }
 
     void moveForAnHour(Race race){
-        distanceTraveled++;
+
     }
 
+    int getSpeed() {
+        return speed;
+    }
+
+    void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    int getCurrentSpeed() {
+        return currentSpeed;
+    }
+
+    void setCurrentSpeed(int currentSpeed) {
+        this.currentSpeed = currentSpeed;
+    }
+
+    String getType() {
+        return type;
+    }
+
+    void setType(String type) {
+        this.type = type;
+    }
 }
